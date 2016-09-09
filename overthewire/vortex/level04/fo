@@ -1,0 +1,2 @@
+sed  -e 's/(nil)/0x00000000/g' -e 's/0x/\n/g' | sed -e ':a;s/^.\{1,7\}$/0&/;ta' | sed -e '1n'  -e 'N;N;N;s/\n/  /g' -e '$s/$/\n/'
+
