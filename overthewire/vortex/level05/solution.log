@@ -1,0 +1,9 @@
+vortex5@melinda:/games/vortex$ ./vortex5
+Password: rlTf6
+6:36
+You got the right password, congrats!
+$ id
+uid=5006(vortex6) gid=5005(vortex5) groups=5006(vortex6),5005(vortex5)
+$ cat /etc/vortex_pass/vortex6
+*uy5qDRb2
+$

@@ -1,0 +1,57 @@
+➜  hashcat git:(master) ✗ ./hashcat -m 0 vortex5.hash example.dict
+hashcat (v3.20-55-gd259f96) starting...
+
+OpenCL Platform #1: Apple
+=========================
+* Device #1: Intel(R) Core(TM) M-5Y71 CPU @ 1.20GHz, skipped
+* Device #2: Intel(R) HD Graphics 5300, 384/1536 MB allocatable, 24MCU
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Applicable Optimizers:
+* Zero-Byte
+* Precompute-Init
+* Precompute-Merkle-Demgard
+* Meet-In-The-Middle
+* Early-Skip
+* Not-Salted
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+* Raw-Hash
+
+Watchdog: Temperature abort trigger disabled
+Watchdog: Temperature retain trigger disabled
+
+Cache-hit dictionary stats example.dict: 1080240 bytes, 129988 words, 129988 keyspace
+
+The wordlist or mask you are using is too small.
+Therefore, hashcat is unable to utilize the full parallelization power of your device(s).
+The cracking speed will drop.
+Workaround: https://hashcat.net/wiki/doku.php?id=frequently_asked_questions#how_to_create_more_work_for_full_speed
+
+INFO: approaching final keyspace, workload adjusted
+
+155fb95d04287b757c996d77b5ea51f7:rlTf6
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Type........: MD5
+Hash.Target......: 155fb95d04287b757c996d77b5ea51f7
+Time.Started.....: Tue Dec 27 16:04:09 2016 (0 secs)
+Time.Estimated...: Tue Dec 27 16:04:09 2016 (0 secs)
+Input.Base.......: File (example.dict)
+Input.Queue......: 1/1 (100.00%)
+Speed.Dev.#2.....: 45158.2 kH/s (1.64ms)
+Recovered........: 1/1 (100.00%) Digests, 1/1 (100.00%) Salts
+Progress.........: 129988/129988 (100.00%)
+Rejected.........: 0/129988 (0.00%)
+Restore.Point....: 0/129988 (0.00%)
+Candidates.#2....: 0 -> zzzzzzzzzzz
+
+Started: Tue Dec 27 16:03:53 2016
+Stopped: Tue Dec 27 16:04:11 2016
+➜  hashcat git:(master) ✗
+
