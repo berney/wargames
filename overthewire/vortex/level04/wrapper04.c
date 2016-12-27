@@ -13,6 +13,6 @@ int main(int argc, char* argv[]) {
     fakev[4] = NULL;
     fakev[5] = NULL;
 
-    execve("/vortex/vortex4", &fakev[0], &fakev[1]);
+    execve("./v4", &fakev[0], &fakev[1]);
     printf("execve failed\n");
 }
