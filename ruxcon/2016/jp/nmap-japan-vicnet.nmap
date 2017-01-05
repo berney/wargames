@@ -1,0 +1,43 @@
+# Nmap 7.30 scan initiated Mon Oct 10 23:58:47 2016 as: nmap -A -v -oA nmap-japan-vicnet 104.199.206.201
+Nmap scan report for 201.206.199.104.bc.googleusercontent.com (104.199.206.201)
+Host is up (0.16s latency).
+Not shown: 989 filtered ports
+PORT     STATE  SERVICE        VERSION
+22/tcp   open   ssh            OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 de:cc:4c:92:23:a4:d1:78:af:13:24:de:57:ab:98:14 (DSA)
+|   2048 04:85:5b:17:2f:41:bd:ee:3c:a3:d7:98:d4:43:db:7f (RSA)
+|_  256 4d:79:7f:b5:54:62:91:42:4b:66:a6:0d:31:5a:10:81 (ECDSA)
+25/tcp   closed smtp
+79/tcp   closed finger
+80/tcp   open   http           Apache httpd 2.4.7 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: POST OPTIONS GET HEAD
+|_http-server-header: Apache/2.4.7 (Ubuntu)
+|_http-title: VICNET Dial-up accounts
+111/tcp  open   rpcbind        2-4 (RPC #100000)
+| rpcinfo: 
+|   program version   port/proto  service
+|   100000  2,3,4        111/tcp  rpcbind
+|   100000  2,3,4        111/udp  rpcbind
+|   100003  2,3,4       2049/tcp  nfs
+|   100003  2,3,4       2049/udp  nfs
+|   100005  1,2,3       4002/tcp  mountd
+|   100005  1,2,3       4002/udp  mountd
+|   100021  1,3,4       4001/tcp  nlockmgr
+|   100021  1,3,4       4001/udp  nlockmgr
+|   100024  1          36615/tcp  status
+|   100024  1          59379/udp  status
+|   100227  2,3         2049/tcp  nfs_acl
+|_  100227  2,3         2049/udp  nfs_acl
+443/tcp  closed https
+2049/tcp open   nfs_acl        2-3 (RPC #100227)
+3389/tcp closed ms-wbt-server
+4000/tcp closed remoteanything
+4001/tcp open   nlockmgr       1-4 (RPC #100021)
+4002/tcp open   mountd         1-3 (RPC #100005)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/local/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Oct 10 23:59:13 2016 -- 1 IP address (1 host up) scanned in 26.50 seconds

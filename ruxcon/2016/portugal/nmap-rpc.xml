@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.30 scan initiated Tue Oct 11 02:26:43 2016 as: nmap -A -v -p 22,23,834,835,837 -oA nmap-rpc 104.199.173.4 -->
+<nmaprun scanner="nmap" args="nmap -A -v -p 22,23,834,835,837 -oA nmap-rpc 104.199.173.4" start="1476113203" startstr="Tue Oct 11 02:26:43 2016" version="7.30" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="5" services="22-23,834-835,837"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1476113204"/>
+<taskend task="NSE" time="1476113204"/>
+<taskbegin task="NSE" time="1476113204"/>
+<taskend task="NSE" time="1476113204"/>
+<taskbegin task="Ping Scan" time="1476113204"/>
+<taskend task="Ping Scan" time="1476113204" extrainfo="1 total hosts"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1476113204"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1476113204"/>
+<taskbegin task="Connect Scan" time="1476113204"/>
+<taskend task="Connect Scan" time="1476113204" extrainfo="5 total ports"/>
+<taskbegin task="Service scan" time="1476113204"/>
+<taskend task="Service scan" time="1476113218" extrainfo="5 services on 1 host"/>
+<taskbegin task="NSE" time="1476113218"/>
+<taskend task="NSE" time="1476113226"/>
+<taskbegin task="NSE" time="1476113226"/>
+<taskend task="NSE" time="1476113331"/>
+<host starttime="1476113204" endtime="1476113331"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="104.199.173.4" addrtype="ipv4"/>
+<hostnames>
+<hostname name="4.173.199.104.bc.googleusercontent.com" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="6.6.1p1 Ubuntu 2ubuntu2.8" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:6.6.1p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  1024 91:39:aa:36:fa:a1:da:1a:32:30:c9:d6:1f:f6:53:d3 (DSA)&#xa;  2048 e8:f4:7f:fb:04:c5:7c:f2:7a:18:3d:60:99:6a:52:53 (RSA)&#xa;  256 83:4c:0b:00:05:e9:d6:fb:c4:e9:e6:47:a8:cf:2c:ea (ECDSA)"><table>
+<elem key="key">AAAAB3NzaC1kc3MAAACBAMoKjli+hSdmcIPw2dvn39kY9wD3r4a4tZGe9nE/R4TCUlG0eXHWI4W6mDOfN3P2SnrT71vFFH89DiCfH3MT0q9nUq/3RVS37R6qsh/671aJDrWfs+0JmqPrKjrP5cnoNK0lWJ9T4X1EDZckIcaMkG62PimyP0DHvb34RHEwY7vTAAAAFQDMpXebocBJ0x7JLDqdNdwmsAwY5QAAAIBYrVDvxnTXHfWObriUiuedGBMxBkE7bJ0GYthJay32WPB87cTmoWErIHjgU6uUwAtRq+jm+sT8SsDcRnY1c9Nx/EIrK8SS2JOs3zuqfEqJh0wnG8vbBkXQ1XlzJE+ckcVMca5ievv0C7EBjFpd6+BXY923fVzStW6ifYg+BYsK4QAAAIEArC0PoN3MLGiSC3T6JaEu+YbUIuWE35Yi8cAa9jBKx8xsBijlysb3shbMEXti3cHjAZLQHr6ZDkAWgJRJvpYEYCp4JhSmI4sD4iwtW8eCc45C2mFyT1t7WAnJxoguQrg0lMwEDMyW4AZWUqXxy8nfGN4Nn28zBhFpCJlsu/eolYE=</elem>
+<elem key="bits">1024.0</elem>
+<elem key="fingerprint">9139aa36faa1da1a3230c9d61ff653d3</elem>
+<elem key="type">ssh-dss</elem>
+</table>
+<table>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQCjOJP95VZueRAFFYY65k4J3aMzSQpFppaqdFnAA3Z7GRw227UT6xNEIrqIv2pfxaSrlyBWC+MYjbIRIsUccUAh1onNAkJIEPr/RpqOkeLujTmOCEhmx3Utk+urEMBkC36xdZpQnW6//Fqm4ssVFENSsb3uH+2Xx/TBi5CZRUBZSntXL3WwHFFxIOw6VHb2KK6uZqVyvpk6iBXil/UC1m9DIBqhKLdQldVtrNGByxUoScggzTzu4DvKfauoO+wAQpHzgl+euEVCFtFEFDAfAUfGoXFDKc5pofg8m9Rdl6pArkUxqoU5imgQNIFeJGMQFkrvr/GRe7wlu4xYtf5+Lwm9</elem>
+<elem key="bits">2048.0</elem>
+<elem key="fingerprint">e8f47ffb04c57cf27a183d60996a5253</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+<table>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBI/3EEizzGpNjiz/yO4Xxi2M30nhGFEyObihuiVK39Svc2rkTKwJ64piGYEBCkwU52Ww3367b/GIbpxaWZikbL8=</elem>
+<elem key="bits">256</elem>
+<elem key="fingerprint">834c0b0005e9d6fbc4e9e647a8cf2cea</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="23"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="telnet" product="Linux telnetd" ostype="Linux" method="probed" conf="10"><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+<port protocol="tcp" portid="834"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ypserv" version="1-2" extrainfo="RPC #100004" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="835"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ypbind" version="1-2" extrainfo="RPC #100007" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="837"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="fypxfrd" version="1" extrainfo="RPC #600100069" method="probed" conf="10"/></port>
+</ports>
+<times srtt="202305" rttvar="122373" to="691797"/>
+</host>
+<taskbegin task="NSE" time="1476113331"/>
+<taskend task="NSE" time="1476113331"/>
+<taskbegin task="NSE" time="1476113331"/>
+<taskend task="NSE" time="1476113331"/>
+<runstats><finished time="1476113331" timestr="Tue Oct 11 02:28:51 2016" elapsed="127.29" summary="Nmap done at Tue Oct 11 02:28:51 2016; 1 IP address (1 host up) scanned in 127.29 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.30 scan initiated Tue Oct 11 00:02:24 2016 as: nmap -A -v -p 111,2049,4002,4001,36615,U:111,U:2049,U:4002,U:59379 -oA nmap-japan-vicnet-rpcports 104.199.206.201 -->
+<nmaprun scanner="nmap" args="nmap -A -v -p 111,2049,4002,4001,36615,U:111,U:2049,U:4002,U:59379 -oA nmap-japan-vicnet-rpcports 104.199.206.201" start="1476104544" startstr="Tue Oct 11 00:02:24 2016" version="7.30" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="5" services="111,2049,4001-4002,36615"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1476104545"/>
+<taskend task="NSE" time="1476104545"/>
+<taskbegin task="NSE" time="1476104545"/>
+<taskend task="NSE" time="1476104545"/>
+<taskbegin task="Ping Scan" time="1476104545"/>
+<taskend task="Ping Scan" time="1476104545" extrainfo="1 total hosts"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1476104545"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1476104545"/>
+<taskbegin task="Connect Scan" time="1476104545"/>
+<taskend task="Connect Scan" time="1476104546" extrainfo="5 total ports"/>
+<taskbegin task="Service scan" time="1476104546"/>
+<taskend task="Service scan" time="1476104559" extrainfo="4 services on 1 host"/>
+<taskbegin task="NSE" time="1476104559"/>
+<taskend task="NSE" time="1476104559"/>
+<taskbegin task="NSE" time="1476104559"/>
+<taskend task="NSE" time="1476104560"/>
+<host starttime="1476104545" endtime="1476104560"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="104.199.206.201" addrtype="ipv4"/>
+<hostnames>
+<hostname name="201.206.199.104.bc.googleusercontent.com" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="111"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="rpcbind" version="2-4" extrainfo="RPC #100000" method="probed" conf="10"/><script id="rpcinfo" output="&#xa;  program version   port/proto  service&#xa;  100000  2,3,4        111/tcp  rpcbind&#xa;  100000  2,3,4        111/udp  rpcbind&#xa;  100003  2,3,4       2049/tcp  nfs&#xa;  100003  2,3,4       2049/udp  nfs&#xa;  100005  1,2,3       4002/tcp  mountd&#xa;  100005  1,2,3       4002/udp  mountd&#xa;  100021  1,3,4       4001/tcp  nlockmgr&#xa;  100021  1,3,4       4001/udp  nlockmgr&#xa;  100024  1          36615/tcp  status&#xa;  100024  1          59379/udp  status&#xa;  100227  2,3         2049/tcp  nfs_acl&#xa;  100227  2,3         2049/udp  nfs_acl&#xa;"><table key="100005">
+<table key="udp">
+<elem key="port">4002</elem>
+<table key="version">
+<elem>1</elem>
+<elem>2</elem>
+<elem>3</elem>
+</table>
+</table>
+<table key="tcp">
+<elem key="port">4002</elem>
+<table key="version">
+<elem>1</elem>
+<elem>2</elem>
+<elem>3</elem>
+</table>
+</table>
+</table>
+<table key="100000">
+<table key="tcp">
+<elem key="port">111</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+<table key="udp">
+<elem key="port">111</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+</table>
+<table key="100227">
+<table key="tcp">
+<elem key="port">2049</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+</table>
+</table>
+<table key="udp">
+<elem key="port">2049</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+</table>
+</table>
+</table>
+<table key="100024">
+<table key="udp">
+<elem key="port">59379</elem>
+<table key="version">
+<elem>1</elem>
+</table>
+</table>
+<table key="tcp">
+<elem key="port">36615</elem>
+<table key="version">
+<elem>1</elem>
+</table>
+</table>
+</table>
+<table key="100003">
+<table key="tcp">
+<elem key="port">2049</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+<table key="udp">
+<elem key="port">2049</elem>
+<table key="version">
+<elem>2</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+</table>
+<table key="100021">
+<table key="udp">
+<elem key="port">4001</elem>
+<table key="version">
+<elem>1</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+<table key="tcp">
+<elem key="port">4001</elem>
+<table key="version">
+<elem>1</elem>
+<elem>3</elem>
+<elem>4</elem>
+</table>
+</table>
+</table>
+</script></port>
+<port protocol="tcp" portid="2049"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="nfs_acl" version="2-3" extrainfo="RPC #100227" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="4001"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="nlockmgr" version="1-4" extrainfo="RPC #100021" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="4002"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="mountd" version="1-3" extrainfo="RPC #100005" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="36615"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="145779" rttvar="47493" to="335751"/>
+</host>
+<taskbegin task="NSE" time="1476104560"/>
+<taskend task="NSE" time="1476104560"/>
+<taskbegin task="NSE" time="1476104560"/>
+<taskend task="NSE" time="1476104560"/>
+<runstats><finished time="1476104560" timestr="Tue Oct 11 00:02:40 2016" elapsed="15.38" summary="Nmap done at Tue Oct 11 00:02:40 2016; 1 IP address (1 host up) scanned in 15.38 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

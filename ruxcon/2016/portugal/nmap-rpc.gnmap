@@ -1,0 +1,5 @@
+# Nmap 7.30 scan initiated Tue Oct 11 02:26:43 2016 as: nmap -A -v -p 22,23,834,835,837 -oA nmap-rpc 104.199.173.4
+# Ports scanned: TCP(5;22-23,834-835,837) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 104.199.173.4 (4.173.199.104.bc.googleusercontent.com)	Status: Up
+Host: 104.199.173.4 (4.173.199.104.bc.googleusercontent.com)	Ports: 22/open/tcp//ssh//OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)/, 23/open/tcp//telnet//Linux telnetd/, 834/open/tcp//ypserv//1-2 (RPC #100004)/, 835/open/tcp//ypbind//1-2 (RPC #100007)/, 837/open/tcp//fypxfrd//1 (RPC #600100069)/
+# Nmap done at Tue Oct 11 02:28:51 2016 -- 1 IP address (1 host up) scanned in 127.29 seconds

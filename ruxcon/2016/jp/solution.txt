@@ -1,0 +1,10 @@
+Need to mount nfs
+Need to source port from < 1024 (resvered port)
+sudo mount -o revsport -t nfs <IP>:<share> <mountpoint>
+
+Can write to cgi-bin
+
+Can upload perl webshell
+
+flag is in /l8r-sk8r file
+{flag}0d8d0b0c-773f-11e6-9ebd-1792262b87bd{flag}

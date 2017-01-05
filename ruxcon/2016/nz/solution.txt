@@ -1,0 +1,1 @@
+you are stuck in your home dir can't cd out, but you can still ls outside of it, and cat etc.

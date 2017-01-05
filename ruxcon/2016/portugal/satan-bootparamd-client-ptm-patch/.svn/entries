@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="16"
+   name=""
+   committed-date="2007-06-17T11:42:54.923368Z"
+   url="file:///var/svn/repos/bootparam"
+   last-author="ml"
+   kind="dir"
+   uuid="04bab82a-cf2f-0410-9b6d-8964e7dfd8d7"
+   repos="file:///var/svn/repos"
+   revision="16"/>
+<entry
+   committed-rev="16"
+   name="boot"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="3eac1b158517e8a0e994c668b6bdea32"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="boot.c"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="72460d9c076fc9cbd0fe95e133a27e73"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="bootparam_prot_svc.c"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="6557f9dc1bfc08254dfb4250507decee"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="bootparam_prot_xdr.c"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="7735a3b38da2c15cbab9be92a8670d13"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="bootparam_prot_clnt.c"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="19c099de4ea135e4d4b94f8cbbc1764d"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="Makefile"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="662c129dbbbd4bc064bab6733540a8af"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="bootparam_prot.h"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="77259275b56ed31daa2f30ae70be7228"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+<entry
+   committed-rev="16"
+   name="bootparam_prot.x"
+   text-time="2007-06-17T11:50:06.000000Z"
+   committed-date="2007-06-17T11:42:54.923368Z"
+   checksum="cc2f3753e44ec163e0b8c82b1a1a9933"
+   last-author="ml"
+   kind="file"
+   prop-time="2007-06-17T11:50:06.000000Z"/>
+</wc-entries>
