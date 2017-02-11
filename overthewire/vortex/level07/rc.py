@@ -1,3 +1,4 @@
+# Ripped from vortex7
 crc32_table = (
     0x00000000, 0x77073096, 0xee0e612c, 0x990951ba,
     0x076dc419, 0x706af48f, 0xe963a535, 0x9e6495a3,
@@ -65,12 +66,76 @@ crc32_table = (
     0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d
 )
 
+
 def BYTE(c):
     return c & 0xFF
 
+
 def crc32(crc, msg):
+    """
+    This is shifting to the right so it's the reflected type
+    """
     for c in msg:
         b = ord(c)
         crc = crc32_table[BYTE(b ^ crc)] ^ (crc >> 8)
     return crc
 
+
+def reflect(x,w=32):
+    """
+    Reflect the bits, so 1101 becomes 1011 for example
+    """
+    r = 0
+    for i in range(w):
+        r += (x & 1) << (w - i - 1)
+        x = x >> 1
+        #print hex(r), hex(x)
+    return r
+
+
+CRCPOLY  = 0x104C11DB7
+CRCRPOLY = 0x1db710641
+CRCINV  =   0xcbf1acda
+CRCRINV =   0x5b358fd3
+
+
+def test_reflect():
+    # CRC32 Poly 0x104C11DB7 is 0x1db710641 when reflected
+    assert(reflect(CRCPOLY,33) == CRCRPOLY)
+    assert(reflect(CRCRPOLY,33) == CRCPOLY)
+    # CRC32 Poly 0x104C11DB7 is reflected 0xedb88320 when X^32 is ignored
+    assert(reflect(CRCPOLY,33) >> 1 == 0xedb88320)
+    assert(reflect(0xedb88320,32) + (1<<32) == CRCPOLY)
+
+
+def calc_table(crcpoly=0xedb88320):
+    """
+    This is the reflected version with right shifts, the crcpoly should be a reflected poly.
+    With crcpoly = 0xedb88320, this produces the same table as crc32_table ripped from vortex7
+    """
+    crc_table = []
+    for i in range(256):
+        crcreg = i
+        for k in range(8):
+            top_bit = crcreg & 1
+            crcreg = crcreg >> 1
+            if top_bit:
+                crcreg = crcreg ^ crcpoly
+        crc_table.append(crcreg)
+    return crc_table
+
+
+def calc_rev_crc32_table():
+    """
+    Calculates the reverse CRC32 Table
+    """
+    rev_table = []
+    for n in range(256):
+        c = n << 3*8
+        for k in range(8):
+            if ((c & 0x80000000) != 0):
+                c = ((c ^ CRCPOLY) << 1) | 1
+            else:
+                c <<= 1
+        rev_table.append(c)
+    return rev_table
