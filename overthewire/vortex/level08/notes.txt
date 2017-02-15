@@ -1,0 +1,13 @@
+Reversing: -
+  - Uses pthreads
+  - Starts a thread running safecode()
+    - Keeps looping print out a variable
+  - Drops privileges, setting ruid, euid, suid, rgid, egid, rgid to uid, gid 
+  - Calls unsafecode()
+    - It's already dropped privs in this thread
+    - Vulnerable to stackoverflow
+        - Strcpy(buf_408, argv[1])
+    - Can overwrite GOT/RELS or similar for library functions that privileged thread is making
+      - I think shellcode will need to do do this hijacking of the GOT/RELS
+      - pointing them the buffer with 2nd stage shellcode that drops shell
+      - or if No-exec stack then malloc a RWX page and copy 2nd stage there
