@@ -8,7 +8,7 @@ Read in 20 integers and write the seed used to generate those numbers in unsigne
 # Notes
 
 - I remember this level
-- It is using a weak PRNG, not CSRNG, from memory it's a [Linear Congruential Generator(LCG)][LCG]
+- It is using a weak PRNG, not CSRNG, from memory it's a [Linear Congruential Generator][LCG] (LCG).
   - You can analyse the output and deduce the seed
     - I wrote a python script to do this, but I've lost it.
   - This [PRNG] wikipedia article is interesting about how 40 years on weak PRNG are still problems.
